@@ -1,4 +1,4 @@
-const { startRegistration,browserSupportsWebAuthnAutofill } = SimpleWebAuthnBrowser;
+const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
 
 async function signUp()
 {
