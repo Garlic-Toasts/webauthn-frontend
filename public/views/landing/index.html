@@ -9,12 +9,14 @@
         <link rel="stylesheet" href="/static/css/main.css">
         <link rel="stylesheet" href="/static/css/landing.css">
         <link rel="stylesheet" href="/static/css/sign-up.css">
+        <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+        <script src="/static/js/sign-up.js"></script>
     </head>
     <body>
         <div class="container">
             <div class="left-half">
                 <h1 class="big-text">WebAuthn</h1>
-                <h1 class="team">Developed by: Garlic Toasts</h1>
+                <h1 class="team">Developed by: Ga<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">r</a>lic Toasts</h1>
                 <a href="https://github.com/Garlic-Toasts">
                     <div id="about">
                         <p class="about-webauthn">
@@ -30,12 +32,12 @@
             <div class="right-half">
                 <div id="sign-up">
                     <!-- <h2>Создайте учётную запись</h2> -->
-                    <form id="sign-up-form">
+                    <div id="sign-up-form">
                         <p id="login-label">Логин</p>
                         <input  id="login" type="text" placeholder="Логин" x-model="username" autocomplete="username webauthn">
-                        <button type="submit">Зарегистрироваться</button>
-                        <button type="submit">Войти</button>
-                    </form>
+                        <button onclick="signUp()">Зарегистрироваться</button>
+                        <button>Войти</button>
+                    </div>
                 </div>
                 <!-- <p class="copyright">Garlic Toasts ©</p> -->
             </div>

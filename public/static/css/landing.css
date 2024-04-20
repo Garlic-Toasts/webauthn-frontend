@@ -103,3 +103,6 @@ img {
         padding-bottom: 50px;
     }
 }
+a {
+    color: var(--primary);
+}
