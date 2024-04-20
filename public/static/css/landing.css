@@ -1,3 +1,105 @@
-h1 {
-    text-align: center;
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+}
+
+.left-half {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-half {
+    flex: 1;
+    background-color: #0880AE; 
+    transition: background-color 0.5s ease; 
+    padding-bottom: 50px;
+}
+
+.right-half:hover {
+    background-color: #0660a3;
+}
+
+.big-text {
+    font-size: 75px;
+    font-weight: bold;
+    font-family: IBM Plex Sans;
+    color: #2C2738;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team {
+    font-size: 20px;
+    font-family: IBM Plex Sans;
+    color: #2C2738;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.copyright {
+    font-size: 18px;
+    color: var(--shade);
+    margin: 10px 5% 0px 0px;
+    text-align: right;
+    margin: auto 5% 10px 0px;
+    text-align: right;
+}
+
+img {
+    padding-bottom: 2%;
+    height: 70px;
+    display: block;
+    margin: 0 auto;
+    margin-left: 2%;
+}
+
+.info-box {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    margin-top: 50px; 
+}
+
+.info-box h2 {
+    color: #333;
+}
+
+.info-box p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.about-webauthn {
+    font-size: 15px;
+    padding: 0px 30px;
+    text-indent: 20px;
+}
+
+#about {
+    height: 350px;
+    margin: 70px 0px 0px 0px;
+}
+
+@media screen and (max-width: 800px)
+{
+    .container {
+        flex-direction: column;
+    }
+    #about {
+        height: fit-content;
+        padding-bottom: 50px;
+    }
 }

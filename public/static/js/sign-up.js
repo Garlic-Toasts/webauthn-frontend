@@ -1,0 +1,2 @@
+const { startRegistration } = SimpleWebAuthnBrowser;
+startRegistration();

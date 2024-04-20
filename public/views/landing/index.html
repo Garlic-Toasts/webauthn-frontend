@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>WebAuthn</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/static/css/main.css">
         <link rel="stylesheet" href="/static/css/landing.css">
+        <link rel="stylesheet" href="/static/css/sign-up.css">
     </head>
     <body>
-        <h1>Демонстрация webauthn</h1>
-        <h2>Команда <a href="https://github.com/Garlic-Toasts">Garlic Toasts</a></h2>
+        <div class="container">
+            <div class="left-half">
+                <h1 class="big-text">WebAuthn</h1>
+                <h1 class="team">Developed by: Garlic Toasts</h1>
+                <a href="https://github.com/Garlic-Toasts">
+                    <div id="about">
+                        <p class="about-webauthn">
+                            API WebAuthn позволяет производить всего лишь две операции. Оно позволяет создавать новые учётные данные и подписывать запросы от сервера уже созданными учётными данными.
+                        </p>
+                        <p class="about-webauthn">
+                            При попытке авторизации с помощью отпечатка пальца или ключа встроенный скрипт WebAuthn сигнализирует верификатору, что у пользователя есть корректный аутентификатор, то есть необходимые данные для подтверждения того, что он (пользователь) — это он.
+                        </p>
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/640px-GitHub_Invertocat_Logo.svg.png" alt="гитхаб">
+                </a>
+            </div>
+            <div class="right-half">
+                <div id="sign-up">
+                    <h2>Создайте учётную запись</h2>
+                    <form id="sign-up-form">
+                        <p id="login-label">Логин</p>
+                        <input  id="login" type="text" placeholder="Логин" x-model="username" autocomplete="username webauthn">
+                        <button type="submit">Зарегистрироваться</button>
+                        <button type="submit">Войти</button>
+                    </form>
+                </div>
+                <!-- <p class="copyright">Garlic Toasts ©</p> -->
+            </div>
+        </div>
     </body>
 </html>
