@@ -31,7 +31,7 @@ async function signIn()
     const login = document.getElementById('login').value;
 
     const resp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`);
-    let attResp = await startRegistration(await resp.json());
+    let attResp = await startAuthentication(await resp.json());
     const verificationResp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`, {
         method: 'POST',
         headers: {
