@@ -26,5 +26,21 @@ async function signUp()
     console.log(verificationJSON)
 }
 
-//startRegistration();
-browserSupportsWebAuthnAutofill();
+async function signIn()
+{
+    const login = document.getElementById('login').value;
+
+    const resp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`);
+    let attResp = await startRegistration(await resp.json());
+    const verificationResp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(attResp),
+    });
+
+    const verificationJSON = await verificationResp.json();
+
+    console.log(verificationJSON)
+}
