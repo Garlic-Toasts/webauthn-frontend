@@ -57,6 +57,10 @@ button {
     font-weight: 500;
     font-size: 15px;
 }
+button:hover
+{
+    opacity: 90%;
+}
 @media screen and (max-width: 400px)
 {
     #sign-up {
