@@ -3,13 +3,17 @@ const { startRegistration,browserSupportsWebAuthnAutofill } = SimpleWebAuthnBrow
 async function signUp()
 {
     const login = document.getElementById('login').value;
-    console.log(login)
 
-    const resp = await fetch('/generate-registration-options');
+    const logined = await fetch(`https://garlictoasts.ru/api/auth/create/${login}`, {
+        method: 'POST'
+    });
+    console.log(logined);
 
+    const resp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`);
+    console.log(resp)
     let attResp = await startRegistration(await resp.json());
 
-    const verificationResp = await fetch('/verify-registration', {
+    const verificationResp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
