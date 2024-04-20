@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/sign-up.css">
+    </head>
+    <body>
+        <div id="sign-up">
+            <h2>Создайте учётную запись</h2>
+            <form id="sign-up-form">
+                <p id="login-label">Логин</p>
+                <input  id="login" type="text" placeholder="Логин" x-model="username" autocomplete="username webauthn">
+                <button type="submit">Зарегистрироваться</button>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </body>
+</html>
