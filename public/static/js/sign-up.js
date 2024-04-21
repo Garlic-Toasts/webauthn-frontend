@@ -142,7 +142,7 @@ async function displayUserInfo(passkeyId) {
         <h3>Ваш профиль</h2>
         <p class="suc">Логин: <span id="login"></span></p>
         <p class="suc">ID: <span id="user-id"></span></p>
-        <p class="suc">Время создания: <span id="creation-date"></span> <span id="creation-time"></span></p>
+        <p class="suc">Время создания: <br><span id="creation-date"></span> <span id="creation-time"></span></p>
         <button class="delete" onclick="quit()">Выйти</button>
     `;
 
