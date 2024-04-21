@@ -143,15 +143,53 @@ async function displayUserInfo(passkeyId) {
             <p class="suc">Ваш ключ аутентификации:</p>
         </div>
         <div>
-            <p class="suc">Время начала сессии: <span id="session-start-time">[время]</span><script src="/static/js/time.js"></script></p>
-            <p class="suc">Устройство: <span class="device-name">[устройство]</span> <script src="/static/js/device.js"></script> </p>
+            <h2 class="suc">Время начала сессии: <span id="session-start-time">[время]</span></h2>
+            <p class="suc">Устройство: <span class="device-name">[устройство]</span></p>
             <button class="delete" onclick="quit()">Выйти</button>
         </div>
     `;
+
+    // Получение текущего времени
+    let currentTime = new Date();
+
+    // Форматирование времени в строку с помощью функции pad()
+    let formattedTime = currentTime.getHours().toString().padStart(2, '0') + ":" +
+                        currentTime.getMinutes().toString().padStart(2, '0') + ":" +
+                        currentTime.getSeconds().toString().padStart(2, '0');
+
+    // Обновление текста внутри элемента span с id="session-start-time"
+    document.getElementById("session-start-time").textContent = formattedTime;
+
+    let deviceNameElements = document.querySelectorAll(".device-name");
+    deviceNameElements.forEach(function(element) {
+      element.textContent = getDeviceName();
+    });
 }
 
 function quit()
 {
     localStorage.clear();
     window.location.reload();
+}
+
+function getDeviceName() {
+    var userAgent = navigator.userAgent.toLowerCase();
+  
+    if (userAgent.includes("mac")) {
+      return "Mac";
+    } else if (userAgent.includes("iphone")) {
+      return "iPhone";
+    } else if (userAgent.includes("ipad")) {
+      return "iPad";
+    } else if (userAgent.includes("android")) {
+      return "Android";
+    } else if (userAgent.includes("windows phone")) {
+      return "Windows Phone";
+    } else if (userAgent.includes("windows")) {
+      return "Windows PC";
+    } else if (userAgent.includes("linux")) {
+      return "Linux PC";
+    } else {
+      return "Неизвестное устройство";
+    }
 }
