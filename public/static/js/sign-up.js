@@ -11,7 +11,7 @@ async function signUp()
         method: 'POST'
     });
 
-    if (created.status != 200) {
+    if (created.status != 201) {
         showErrorMessage("Пользователь с таким именем уже существует");
         return;
     }
