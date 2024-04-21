@@ -102,6 +102,9 @@ button:hover
     font-weight: 300;
     padding-left: 5px;
 }
+.title_suc {
+    margin-bottom: 10px;
+}
 h3 {
-    margin: 0px;
+    margin: 5px 0px;
 }
