@@ -1,5 +1,11 @@
 const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
 
+window.onload = async () => {
+    const passkeyId = localStorage.getItem("passkeyId");
+    if (passkeyId)
+        await displayUserInfo(passkeyId);
+}
+
 async function signUp()
 {
     const login = document.getElementById('login').value;
@@ -15,7 +21,8 @@ async function signUp()
         showMessage("Пользователь с таким именем уже существует", true);
         return;
     }
-       
+    
+    let verificationJSON;
     try {
         const resp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`);
 
@@ -29,12 +36,16 @@ async function signUp()
             body: JSON.stringify(attResp),
         });
 
-        const verificationJSON = await verificationResp.json();
+        verificationJSON = await verificationResp.json();
     } catch {
         showMessage("Что-то пошло не так, попробуйте позже", true);
     }
 
-    showMessage("Вы успешно зарегистрировались")
+    if (!verificationJSON.success) {
+        showMessage("Что-то пошло не так, попробуйте позже", true);
+    } else {
+        showMessage("Вы успешно зарегистрировались");
+    }
 }
 
 async function signIn()
@@ -67,7 +78,15 @@ async function signIn()
         showMessage("Что-то пошло не так, попробуйте позже", true);
         return;
     }
-    console.log(verificationJSON)
+    if (!verificationJSON.success) {
+        showMessage("Что-то пошло не так, попробуйте позже", true);
+        return;
+    }
+    
+    const passkeyId = verificationJSON.passkeyId;
+    localStorage.setItem("passkeyId", passkeyId);
+
+    displayUserInfo(passkeyId)
 }
 
 function checkLogin(login)
@@ -104,4 +123,14 @@ function showMessage(text, isError = false)
     message.innerText = text;
 
     document.querySelector("#messages").append(message)
+}
+
+async function displayUserInfo(passkeyId) {
+    const userData = await fetch(`https://garlictoasts.ru/api/profile`, {
+        method: 'GET', 
+        headers: {
+            "Authorization": `Bearer ${passkeyId}`
+        },
+    });
+    console.log(userData)
 }
