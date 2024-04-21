@@ -15,7 +15,7 @@ async function signUp()
         showErrorMessage("Пользователь с таким именем уже существует");
         return;
     }
-        
+       
     try {
         const resp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`);
 
@@ -42,8 +42,15 @@ async function signIn()
     if (!checkLogin(login))
         return;
 
+    const resp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`);
+    if (resp.status % 100 != 2) {
+        showErrorMessage("Пользователь не найден");
+        return;
+    }
+
+    let verificationJSON;
+
     try {
-        const resp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`);
         let attResp = await startAuthentication(await resp.json());
         const verificationResp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`, {
             method: 'POST',
@@ -53,23 +60,12 @@ async function signIn()
             body: JSON.stringify(attResp),
         });
 
-        const verificationJSON = await verificationResp.json();
+        verificationJSON = await verificationResp.json();
     } catch {
         showErrorMessage("Что-то пошло не так, попробуйте позже");
+        return;
     }
-}
-
-function showErrorMessage(text)
-{
-    if (document.getElementById("error-message")) {
-        document.getElementById("error-message").remove();
-    }
-    let warningMessage = document.createElement("p");
-    warningMessage.setAttribute("id", "error-message");
-    warningMessage.innerText = text;
-
-    document.querySelector("#errors").append(warningMessage)
-    console.log(text)
+    console.log(verificationJSON)
 }
 
 function checkLogin(login)
@@ -89,3 +85,17 @@ function checkLogin(login)
     }
     return true;
 }
+
+function showErrorMessage(text)
+{
+    if (document.getElementById("error-message")) {
+        document.getElementById("error-message").remove();
+    }
+    let warningMessage = document.createElement("p");
+    warningMessage.setAttribute("id", "error-message");
+    warningMessage.innerText = text;
+
+    document.querySelector("#errors").append(warningMessage)
+    console.log(text)
+}
+
