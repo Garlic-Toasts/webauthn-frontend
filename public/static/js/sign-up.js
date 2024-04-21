@@ -148,8 +148,8 @@ async function displayUserInfo(passkeyId) {
         </div>
     `;
 
-    document.querySelectorAll("#key").innerText = passkeyId;
-    document.querySelectorAll("#device-name").innerText = getDeviceName();
+    document.querySelector("#key").innerText = passkeyId;
+    document.querySelector("#device-name").innerText = getDeviceName();
 }
 
 function quit()
