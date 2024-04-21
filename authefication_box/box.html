@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebAuthn</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="landing.css">
+        <link rel="stylesheet" href="sign-up.css">
+        <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+        <script src="sign-up.js"></script>
+    </head>
+    <body>
+            <div id="sign-up">
+                <div>
+                    <p class="title_suc">Поздравляю, вы успешно авторизовались!</p>
+                  </div>
+                  <div>
+                    <p class="suc">Ваш ключ аутентификации:</p>
+                  </div>
+                  <div>
+                    <p class="suc">Время начала сессии: <span id="session-start-time">[время]</span><script src="time.js"></script></p>
+                    <p class="suc">Устройство: <span class="device-name">[устройство]</span> <script src="device.js"></script> </p>
+                    <button class="delete" onclick="window.location.href='https://garlictoasts.ru/'">Выйти</button>
+                  </div>
+            </div>
+    </body>
+</html>

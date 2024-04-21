@@ -1,0 +1,90 @@
+input {
+    background-color: var(--tint);
+    outline: none;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 10px;
+    width: -webkit-fill-available;
+}
+input::placeholder {
+    color: var(--secondary);
+}
+p {
+    font-size: 12px;
+    color: var(--secondary);
+    font-weight: 400;
+}
+h2 {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+#sign-up {
+    margin-top: 100px;
+    height: 400px;
+    width: 300px;
+    background-color: var(--bright);
+    padding: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+#sign-up-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+button {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary);
+    color: var(--bright);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+button:hover
+{
+    opacity: 90%;
+
+}
+
+.delete {
+    margin-left: 17%;
+}
+#errors {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    height: 20px;
+}
+#error-message {
+    height: 20px;
+    font-size: 15px;
+    color: var(--error);
+    opacity: 100%;
+    animation: error 4s forwards;
+    margin: 0px;
+}
+@keyframes error {
+    0% {opacity: 100%;}
+    100% {opacity: 0;}
+}
+
+@media screen and (max-width: 400px)
+{
+    #sign-up {
+        width: fit-content;
+    }
+}
