@@ -16,10 +16,12 @@ p {
     font-weight: 400;
 }
 h2 {
+    margin: 0px;
     font-size: 20px;
     width: 100%;
     text-align: center;
     font-weight: 500;
+    color: #2C2738;
 }
 #sign-up {
     margin: 0 auto;
@@ -86,16 +88,6 @@ button:hover
     #sign-up {
         width: fit-content;
     }
-}
-
-.title_suc {
-    font-size: 25px;
-    font-family: IBM Plex Sans;
-    color: #2C2738;
-    margin-top: 1%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
 }
 
 .suc {

@@ -136,18 +136,23 @@ async function displayUserInfo(passkeyId) {
     console.log(userData)
 
     document.querySelector("#sign-up").innerHTML = `
-        <div>
-            <h2 class="title_suc">Поздравляю, вы успешно авторизовались!</p>
-        </div>
-        <div>
-            <p class="suc">Ваш ключ аутентификации: <span id="key"></span></p>
-        </div>
-        <div>
-            <p class="suc">Устройство: <span id="device-name"></span></p>
-            <button class="delete" onclick="quit()">Выйти</button>
-        </div>
+        <h2 class="title_suc">Поздравляю, вы успешно авторизовались!</p>
+        <p class="suc">Ваш ключ аутентификации: <span id="key"></span></p>
+        <p class="suc">Устройство: <span id="device-name"></span></p>
+        <h3>Ваш профиль</h2>
+        <p class="suc">Логин:<span id="login"></span></p>
+        <p class="suc">ID:<span id="user-id"></span></p>
+        <p class="suc">Время создания:<span id="creation-date"></span> <span id="creation-time"></span></p>
+        <button class="delete" onclick="quit()">Выйти</button>
     `;
 
+    let date = new Date(userData.createdAt);
+    let creationDate = `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`;
+    let creationTime = userData.createdAt.slice(11,19);
+    document.querySelector("#login").innerText = userData.login;
+    document.querySelector("#user-id").innerText = userData.id;
+    document.querySelector("#creation-time").innerText = creationTime;
+    document.querySelector("#creation-date").innerText = creationDate;
     document.querySelector("#key").innerText = passkeyId;
     document.querySelector("#device-name").innerText = getDeviceName();
 }
