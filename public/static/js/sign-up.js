@@ -97,5 +97,3 @@ function showErrorMessage(text)
 
     document.querySelector("#errors").append(warningMessage)
 }
-
-window.screen.orientation.lock("portrait");
