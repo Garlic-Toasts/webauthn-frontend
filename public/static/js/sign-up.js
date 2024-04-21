@@ -11,7 +11,7 @@ async function signUp()
         method: 'POST'
     });
 
-    if (created.status < 300) {
+    if (created.status != 200) {
         showErrorMessage("Пользователь с таким именем уже существует");
         return;
     }
@@ -43,7 +43,7 @@ async function signIn()
         return;
 
     const resp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`);
-    if (resp.status < 300) {
+    if (resp.status != 200) {
         showErrorMessage("Пользователь не найден");
         return;
     }
