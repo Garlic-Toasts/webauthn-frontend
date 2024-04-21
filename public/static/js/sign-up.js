@@ -159,7 +159,7 @@ async function displayUserInfo(passkeyId) {
     document.querySelector("#creation-time").innerText = creationTime;
     document.querySelector("#creation-date").innerText = creationDate;
     document.querySelector("#key").innerText = passkeyId;
-    document.querySelector("#device-name").innerText = getDeviceName();
+    // document.querySelector("#device-name").innerText = getDeviceName();
 }
 
 function quit()
@@ -168,24 +168,24 @@ function quit()
     window.location.reload();
 }
 
-function getDeviceName() {
-    var userAgent = navigator.userAgent.toLowerCase();
+// function getDeviceName() {
+//     var userAgent = navigator.userAgent.toLowerCase();
   
-    if (userAgent.includes("mac")) {
-      return "Mac";
-    } else if (userAgent.includes("iphone")) {
-      return "iPhone";
-    } else if (userAgent.includes("ipad")) {
-      return "iPad";
-    } else if (userAgent.includes("android")) {
-      return "Android";
-    } else if (userAgent.includes("windows phone")) {
-      return "Windows Phone";
-    } else if (userAgent.includes("windows")) {
-      return "Windows PC";
-    } else if (userAgent.includes("linux")) {
-      return "Linux PC";
-    } else {
-      return "Неизвестное устройство";
-    }
-}
+//     if (userAgent.includes("mac")) {
+//       return "Mac";
+//     } else if (userAgent.includes("iphone")) {
+//       return "iPhone";
+//     } else if (userAgent.includes("ipad")) {
+//       return "iPad";
+//     } else if (userAgent.includes("android")) {
+//       return "Android";
+//     } else if (userAgent.includes("windows phone")) {
+//       return "Windows Phone";
+//     } else if (userAgent.includes("windows")) {
+//       return "Windows PC";
+//     } else if (userAgent.includes("linux")) {
+//       return "Linux PC";
+//     } else {
+//       return "Неизвестное устройство";
+//     }
+// }

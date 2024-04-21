@@ -101,6 +101,7 @@ button:hover
 .suc span {
     font-weight: 300;
     padding-left: 5px;
+    word-break: break-all;
 }
 .title_suc {
     margin-bottom: 10px;
