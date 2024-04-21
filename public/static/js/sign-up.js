@@ -96,6 +96,6 @@ function showErrorMessage(text)
     warningMessage.innerText = text;
 
     document.querySelector("#errors").append(warningMessage)
-    console.log(text)
 }
 
+window.screen.orientation.lock("portrait");
