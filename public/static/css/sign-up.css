@@ -87,3 +87,23 @@ button:hover
         width: fit-content;
     }
 }
+
+.title_suc {
+    font-size: 25px;
+    font-family: IBM Plex Sans;
+    color: #2C2738;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.suc {
+    font-size: 18px;
+    font-family: IBM Plex Sans;
+    color: #2C2738;
+    margin-top: 1%;
+    margin-bottom: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}

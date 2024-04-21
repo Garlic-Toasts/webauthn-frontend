@@ -134,4 +134,24 @@ async function displayUserInfo(passkeyId) {
         },
     });
     console.log(userData)
+
+    document.querySelector("#sign-up").innerHTML = `
+        <div>
+            <p class="title_suc">Поздравляю, вы успешно авторизовались!</p>
+        </div>
+        <div>
+            <p class="suc">Ваш ключ аутентификации:</p>
+        </div>
+        <div>
+            <p class="suc">Время начала сессии: <span id="session-start-time">[время]</span><script src="/static/js/time.js"></script></p>
+            <p class="suc">Устройство: <span class="device-name">[устройство]</span> <script src="/static/js/device.js"></script> </p>
+            <button class="delete" onclick="quit()">Выйти</button>
+        </div>
+    `;
+}
+
+function quit()
+{
+    localStorage.clear();
+    window.location.reload();
 }
