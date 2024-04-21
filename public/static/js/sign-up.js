@@ -136,10 +136,10 @@ async function displayUserInfo(passkeyId) {
     console.log(userData)
 
     document.querySelector("#sign-up").innerHTML = `
-        <h2 class="title_suc">Поздравляю, вы успешно авторизовались!</p>
+        <h2 class="title_suc">Поздравляю, вы успешно авторизовались!</h2>
         <p class="suc">Ваш ключ аутентификации: <span id="key"></span></p>
         <p class="suc">Устройство: <span id="device-name"></span></p>
-        <h3>Ваш профиль</h2>
+        <h3>Ваш профиль</h3>
         <p class="suc">Логин: <span id="login"></span></p>
         <p class="suc">ID: <span id="user-id"></span></p>
         <p class="suc">Время создания: <br><span id="creation-date"></span> <span id="creation-time"></span></p>
