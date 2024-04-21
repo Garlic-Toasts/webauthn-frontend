@@ -40,9 +40,6 @@ h2 {
     display: flex;
     flex-direction: column;
 }
-#login {
-    margin-bottom: 70px;
-}
 button {
     margin-top: 20px;
     margin-left: auto;
@@ -61,6 +58,24 @@ button:hover
 {
     opacity: 90%;
 }
+#errors {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    height: 20px;
+}
+#error-message {
+    height: 20px;
+    font-size: 15px;
+    color: var(--error);
+    opacity: 100%;
+    animation: error 3s forwards;
+    margin: 0px;
+}
+@keyframes error {
+    0% {opacity: 100%;}
+    100% {opacity: 0;}
+}
+
 @media screen and (max-width: 400px)
 {
     #sign-up {

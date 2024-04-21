@@ -4,43 +4,88 @@ async function signUp()
 {
     const login = document.getElementById('login').value;
 
-    const logined = await fetch(`https://garlictoasts.ru/api/auth/create/${login}`, {
+    if (!checkLogin(login))
+        return;
+
+    const created = await fetch(`https://garlictoasts.ru/api/auth/create/${login}`, {
         method: 'POST'
     });
-    console.log(logined);
 
-    const resp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`);
-    console.log(resp)
-    let attResp = await startRegistration(await resp.json());
+    if (created.status % 100 != 2) {
+        showErrorMessage("Пользователь с таким именем уже существует");
+        return;
+    }
+        
+    try {
+        const resp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`);
 
-    const verificationResp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(attResp),
-    });
+        let attResp = await startRegistration(await resp.json());
+
+        const verificationResp = await fetch(`https://garlictoasts.ru/api/auth/register/${login}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(attResp),
+        });
 
     const verificationJSON = await verificationResp.json();
-
-    console.log(verificationJSON)
+    } catch {
+        showErrorMessage("Что-то пошло не так, попробуйте позже");
+    }
 }
 
 async function signIn()
 {
     const login = document.getElementById('login').value;
 
-    const resp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`);
-    let attResp = await startAuthentication(await resp.json());
-    const verificationResp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(attResp),
-    });
+    if (!checkLogin(login))
+        return;
 
-    const verificationJSON = await verificationResp.json();
+    try {
+        const resp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`);
+        let attResp = await startAuthentication(await resp.json());
+        const verificationResp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(attResp),
+        });
 
-    console.log(verificationJSON)
+        const verificationJSON = await verificationResp.json();
+    } catch {
+        showErrorMessage("Что-то пошло не так, попробуйте позже");
+    }
+}
+
+function showErrorMessage(text)
+{
+    if (document.getElementById("error-message")) {
+        document.getElementById("error-message").remove();
+    }
+    let warningMessage = document.createElement("p");
+    warningMessage.setAttribute("id", "error-message");
+    warningMessage.innerText = text;
+
+    document.querySelector("#errors").append(warningMessage)
+    console.log(text)
+}
+
+function checkLogin(login)
+{
+    // if login is empty or too short
+    if (login.length < 3)
+    {
+        // if login is not empty
+        if (login.length != 0)
+            showErrorMessage("Слишком короткое имя пользователя");
+        return false;
+    }
+    else if (login.length > 20)
+    {
+        showErrorMessage("Слишком длинное имя пользователя");
+        return false;
+    }
+    return true;
 }
