@@ -132,7 +132,8 @@ async function displayUserInfo(passkeyId) {
         headers: {
             "Authorization": `Bearer ${passkeyId}`
         },
-    });
+    }).then((body) => {return body.json()});
+    
     console.log(userData)
 
     document.querySelector("#sign-up").innerHTML = `
