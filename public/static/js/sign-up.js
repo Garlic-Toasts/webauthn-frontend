@@ -12,7 +12,7 @@ async function signUp()
     });
 
     if (created.status != 201) {
-        showErrorMessage("Пользователь с таким именем уже существует");
+        showMessage("Пользователь с таким именем уже существует", true);
         return;
     }
        
@@ -29,10 +29,12 @@ async function signUp()
             body: JSON.stringify(attResp),
         });
 
-    const verificationJSON = await verificationResp.json();
+        const verificationJSON = await verificationResp.json();
     } catch {
-        showErrorMessage("Что-то пошло не так, попробуйте позже");
+        showMessage("Что-то пошло не так, попробуйте позже", true);
     }
+
+    showMessage("Вы успешно зарегистрировались")
 }
 
 async function signIn()
@@ -44,7 +46,7 @@ async function signIn()
 
     const resp = await fetch(`https://garlictoasts.ru/api/auth/login/${login}`);
     if (resp.status != 200) {
-        showErrorMessage("Пользователь не найден");
+        showMessage("Пользователь не найден", true);
         return;
     }
 
@@ -62,7 +64,7 @@ async function signIn()
 
         verificationJSON = await verificationResp.json();
     } catch {
-        showErrorMessage("Что-то пошло не так, попробуйте позже");
+        showMessage("Что-то пошло не так, попробуйте позже", true);
         return;
     }
     console.log(verificationJSON)
@@ -75,25 +77,31 @@ function checkLogin(login)
     {
         // if login is not empty
         if (login.length != 0)
-            showErrorMessage("Слишком короткое имя пользователя");
+            showMessage("Слишком короткое имя пользователя", false);
         return false;
     }
     else if (login.length > 20)
     {
-        showErrorMessage("Слишком длинное имя пользователя");
+        showMessage("Слишком длинное имя пользователя", true);
         return false;
     }
     return true;
 }
 
-function showErrorMessage(text)
+function showMessage(text, isError = false)
 {
-    if (document.getElementById("error-message")) {
-        document.getElementById("error-message").remove();
+    if (document.getElementById("message")) {
+        document.getElementById("message").remove();
     }
-    let warningMessage = document.createElement("p");
-    warningMessage.setAttribute("id", "error-message");
-    warningMessage.innerText = text;
+    let message = document.createElement("p");
+    message.setAttribute("id", "message");
 
-    document.querySelector("#errors").append(warningMessage)
+    if (isError)
+        message.setAttribute("class", "error");
+    else
+        message.setAttribute("class", "success");
+
+    message.innerText = text;
+
+    document.querySelector("#messages").append(message)
 }

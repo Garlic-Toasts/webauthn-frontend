@@ -17,6 +17,9 @@ h1 {
     color: var(--primary);
     font-size: 45px;
 }
+button {
+    cursor: pointer;
+}
 a {
     text-decoration: none;
     color: var(--success);
