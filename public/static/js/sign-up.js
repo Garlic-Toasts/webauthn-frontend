@@ -151,8 +151,14 @@ async function displayUserInfo(passkeyId) {
     let creationMonth = date.getMonth() + 1;
     if (creationMonth < 10)
         creationMonth = "0" + creationMonth;
+
     let creationDate = `${creationDay}.${creationMonth}.${date.getFullYear()}`;
-    let creationTime = userData.createdAt.slice(11,19);
+    
+    let creationHour = date.getHours();
+    if (creationHour < 10)
+        creationHour = "0" + creationHour;
+    let creationTime = creationHour + userData.createdAt.slice(9,19);
+
     document.querySelector("#login").innerText = userData.login;
     document.querySelector("#user-id").innerText = userData.id;
     document.querySelector("#creation-time").innerText = creationTime;
