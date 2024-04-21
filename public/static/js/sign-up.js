@@ -133,7 +133,6 @@ async function displayUserInfo(passkeyId) {
         },
     }).then((body) => {return body.json()});
 
-    console.log(userData)
 
     document.querySelector("#sign-up").innerHTML = `
         <h2 class="title_suc">Поздравляю, вы успешно авторизовались!</h2>
