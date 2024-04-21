@@ -68,7 +68,7 @@ button:hover
     font-size: 15px;
     color: var(--error);
     opacity: 100%;
-    animation: error 3s forwards;
+    animation: error 4s forwards;
     margin: 0px;
 }
 @keyframes error {
