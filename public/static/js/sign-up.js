@@ -143,15 +143,13 @@ async function displayUserInfo(passkeyId) {
             <p class="suc">Ваш ключ аутентификации: <span id="key"></span></p>
         </div>
         <div>
-            <p class="suc">Устройство: <span class="device-name"></span></p>
+            <p class="suc">Устройство: <span id="device-name"></span></p>
             <button class="delete" onclick="quit()">Выйти</button>
         </div>
     `;
 
-    let deviceNameElements = document.querySelectorAll(".device-name");
-    deviceNameElements.forEach(function(element) {
-      element.textContent = getDeviceName();
-    });
+    document.querySelectorAll("#key").textContent = passkeyId;
+    document.querySelectorAll("#device-name").textContent = getDeviceName();
 }
 
 function quit()
