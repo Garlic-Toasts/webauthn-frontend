@@ -2,7 +2,7 @@ const { startRegistration, startAuthentication } = SimpleWebAuthnBrowser;
 
 window.onload = async () => {
     const passkeyId = localStorage.getItem("passkeyId");
-    if (passkeyId)
+    if (passkeyId != undefined)
         await displayUserInfo(passkeyId);
 }
 
@@ -85,6 +85,7 @@ async function signIn()
     
     const passkeyId = verificationJSON.passkeyId;
     localStorage.setItem("passkeyId", passkeyId);
+    localStorage.setItem("keys", passkeyId);
 
     displayUserInfo(passkeyId)
 }
