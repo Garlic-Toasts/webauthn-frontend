@@ -83,9 +83,8 @@ async function signIn()
         return;
     }
     
-    const passkeyId = verificationJSON.passkeyId;
+    const passkeyId = verificationJSON.passkey.id;
     localStorage.setItem("passkeyId", passkeyId);
-    localStorage.setItem("keys", passkeyId);
 
     displayUserInfo(passkeyId)
 }
@@ -133,33 +132,21 @@ async function displayUserInfo(passkeyId) {
             "Authorization": `Bearer ${passkeyId}`
         },
     }).then((body) => {return body.json()});
-    
+
     console.log(userData)
 
     document.querySelector("#sign-up").innerHTML = `
         <div>
-            <p class="title_suc">Поздравляю, вы успешно авторизовались!</p>
+            <h2 class="title_suc">Поздравляю, вы успешно авторизовались!</p>
         </div>
         <div>
-            <p class="suc">Ваш ключ аутентификации:</p>
+            <p class="suc">Ваш ключ аутентификации: <span id="key"></span></p>
         </div>
         <div>
-            <h2 class="suc">Время начала сессии: <span id="session-start-time">[время]</span></h2>
-            <p class="suc">Устройство: <span class="device-name">[устройство]</span></p>
+            <p class="suc">Устройство: <span class="device-name"></span></p>
             <button class="delete" onclick="quit()">Выйти</button>
         </div>
     `;
-
-    // Получение текущего времени
-    let currentTime = new Date();
-
-    // Форматирование времени в строку с помощью функции pad()
-    let formattedTime = currentTime.getHours().toString().padStart(2, '0') + ":" +
-                        currentTime.getMinutes().toString().padStart(2, '0') + ":" +
-                        currentTime.getSeconds().toString().padStart(2, '0');
-
-    // Обновление текста внутри элемента span с id="session-start-time"
-    document.getElementById("session-start-time").textContent = formattedTime;
 
     let deviceNameElements = document.querySelectorAll(".device-name");
     deviceNameElements.forEach(function(element) {
