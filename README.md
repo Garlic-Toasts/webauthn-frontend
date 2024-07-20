@@ -1,2 +1,2 @@
-# Frontend for 
-![image](https://github.com/user-attachments/assets/a4b6611e-4bb8-40d8-af5e-a79e908ea085)
+# Frontend for [web-authn solution](https://github.com/Garlic-Toasts/web_auth) by [Garlic Toasts](https://github.com/Garlic-Toasts)
+![image](https://github.com/user-attachments/assets/c2e0ae0a-2058-457d-ab25-8c4f8e640714)
